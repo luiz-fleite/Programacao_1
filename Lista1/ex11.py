@@ -1,0 +1,6 @@
+i1 = int(input("Insira o primeiro número inteiro: "))
+i2 = int(input("Insira o segundo número inteiro: "))
+f = float(input("Insira o número real: "))
+print(f"({i1} * 2) * ({i2}/2) = {(i1 * 2) * (i2 / 2)}")
+print(f"{i1} * 3 + {f} = {i1 * 3 + f}")
+print(f"{f} * {f} * {f} = {f**3}")
