@@ -1,7 +1,5 @@
-
-dia = int(input("Insira o dia: "))
-mes = int(input("Insira o mês: "))
-ano = int(input("Insira o ano: "))
+data = str(input("Insira a data no formato dd/mm/aaaa: "))
+dia, mes, ano = int(data[:2]), int(data[3:5]), int(data[6:])
 
 mes30 = [4, 6, 11]
 
