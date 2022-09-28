@@ -18,9 +18,9 @@ for linha in range(len(tabela["Texto"])):  # perpassando todas as linhas
     for p in tabela["Texto"].get(linha):  # perpassando todas as palavras da linha
         if p not in palavras:  # salvando uma palavra nova
             palavras.append(p)
-            freqs.append(tabela["Texto"].get(linha).count(p))  # contando ela na linha
+            freqs.append(1)  # contando ela
         else:
-            freqs[palavras.index(p)] += tabela["Texto"].get(linha).count(p)  # contando repetição de palavras
+            freqs[palavras.index(p)] += 1  # contando repetição de palavras
 
 tabela2 = pd.DataFrame(list(zip(palavras, freqs)), columns=['Palavras', 'Frequência'])  # formando novo DataFrame
 
