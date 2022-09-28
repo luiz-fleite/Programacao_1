@@ -22,6 +22,6 @@ for linha in range(len(tabela["Texto"])):  # perpassando todas as linhas
         else:
             freqs[palavras.index(p)] += 1  # contando repetição de palavras
 
-tabela2 = pd.DataFrame(list(zip(palavras, freqs)), columns=['Palavras', 'Frequência'])  # formando novo DataFrame
+tabela2 = pd.DataFrame(list(zip(palavras, freqs)), columns=['Palavras', 'Frequência']).sort_values(['Frequência'], ascending=False)  # formando novo DataFrame
 
 tabela2.to_excel("freq_palavras.xlsx", index=False)
