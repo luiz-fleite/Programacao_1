@@ -12,6 +12,7 @@ for i in matriz[0]:
     matriz[1].append(int(random.randint(1, 10)))
 #  Gerador de possibilidades de visitas sem considerar a condição k:
 '''
+'''
 lista = [i for i in range(1, 101)]
 casos = [lista]
 for i in range(2, len(lista)+1):
@@ -21,3 +22,12 @@ for i in range(2, len(lista)+1):
         x.insert(0, i)
         casos.append(x)
 print(casos)
+'''
+
+vx = []
+x = input("Insira o numero de andares e o numero de eventos separados por espaço: ")
+lista = x.split(' ')
+print(lista)
+for i in range(2):
+    vx.append(int(x[i]))
+print(vx)
