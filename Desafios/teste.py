@@ -23,11 +23,3 @@ for i in range(2, len(lista)+1):
         casos.append(x)
 print(casos)
 '''
-
-vx = []
-x = input("Insira o numero de andares e o numero de eventos separados por espaço: ")
-lista = x.split(' ')
-print(lista)
-for i in range(2):
-    vx.append(int(x[i]))
-print(vx)
