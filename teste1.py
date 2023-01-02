@@ -103,3 +103,4 @@ dados_z = rng3.integers(99, size=30)
 
 plt.scatter(x=dados_x, y=dados_y, s=dados_z, c=dados_x)
 plt.show()
+print("alo mundo")

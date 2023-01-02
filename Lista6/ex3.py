@@ -1,12 +1,34 @@
 import pandas as pd
 import glob
 
-# recebendo o arquivo apenas cbo 2010-2020
-file_list = glob.glob("CBO20[1-2][0-9].csv")
-df_cbo = pd.DataFrame(pd.read_csv(file_list[0]))
-for i in range(1, len(file_list)):
-    data = pd.read_csv(file_list[i])
-    df = pd.DataFrame(data)
-    df_cbo = pd.concat([df_cbo, df], axis=1)
-print(df_cbo)
-df_cbo.to_csv("only_cbo.csv", sep=";")
+metricas = ["CBO", "LCO", "LOC", "WMC"]
+
+def formar_df(df_lista: list, coluna="COL1") -> pd.DataFrame:
+    serie = pd.concat(df_lista)
+    serie = serie.groupby(serie[coluna]).sum()
+    return serie
+
+
+def forma_serie(metrica: str) -> pd.DataFrame:
+    dados = []
+
+    def corrigir_dados() -> None:
+        for i in dados[:2]:
+            i["COL1"] = i["COL1"].str.replace("org.springframework.", "spring-", regex=False)
+
+    for csv in glob.iglob(f"{metrica}*.csv"):
+        temp_df = pd.read_csv(csv)
+        dados.append(temp_df)
+
+    corrigir_dados()
+
+    serie = formar_df(dados)
+    return serie
+
+
+solucao = [forma_serie(metrica) for metrica in metricas]
+
+solucao = pd.concat(solucao).groupby("COL1").sum().drop_duplicates()
+solucao.to_csv("all_metrics.csv")
+
+print(solucao)
